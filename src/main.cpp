@@ -1,9 +1,11 @@
 #include "../include/mistakes.h"
 #include "../include/phrases.h"
 #include <cstdio>
+#include <cstring>
 #include <cctype>
 #include <iostream>
 #include <regex>
+#include <string>
 
 char getGuess()
 {
@@ -32,19 +34,19 @@ int main(int argc, char* argv[])
         return 0;
     }
     int difficulty = 1;
-    if (std::strcmp(argv[1], "easy") == 0)
+    if (strcmp(argv[1], "easy") == 0)
     {
         difficulty = 1;
     }
-    else if (std::strcmp(argv[1], "medium") == 0)
+    else if (strcmp(argv[1], "medium") == 0)
     {
         difficulty = 2;
     }
-    else if (std::strcmp(argv[1], "hard") == 0)
+    else if (strcmp(argv[1], "hard") == 0)
     {
         difficulty = 3;
     }
-    else if (std::strcmp(argv[1], "expert") == 0)
+    else if (strcmp(argv[1], "expert") == 0)
     {
         difficulty = 4;
     }
