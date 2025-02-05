@@ -4,8 +4,7 @@
 #include <array>
 #include <string>
 
-namespace Mistakes
-{
+namespace Mistakes {
 
     const std::array<std::string, 5> mistakes {
         // Mistake 1

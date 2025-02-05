@@ -4,8 +4,7 @@
 #include <string>
 #include <vector>
 
-namespace Phrases
-{
+namespace Phrases {
 
     const std::vector<std::string> easy {
         "APPLE",
