@@ -1,66 +1,94 @@
-#include "../include/mistakes.h"
-#include "../include/phrases.h"
+#include "mistakes.h"
+#include "phrases.h"
+#include <algorithm>
 #include <cstdio>
 #include <cstring>
 #include <cctype>
 #include <iostream>
 #include <regex>
+#include <set>
 #include <string>
 
 char getGuess() {
     bool valid { false };
     char guess = ' ';
+    // keep asking until a valid guess is entered
     while (!valid) {
         std::cout << "Enter your guess: ";
-        guess = getchar();
-        std::fflush(stdin);
-        valid = std::regex_match(std::string(1, guess), std::regex("[a-zA-Z]"));
+        std::string guessLine;
+        getline(std::cin, guessLine);
+        if (!guessLine.empty()) {
+            guess = guessLine[0];
+        }
+        valid = std::isalpha(guess);
         if (!valid) {
             std::cout << "Invalid input! Please enter a letter!\n";
         }
     }
+    // make sure all guesses are capitalized
     return std::toupper(guess);
 }
 
-int main(int argc, char* argv[]) {
-    if (argc != 2) {
-        std::cout << "usage: hangman <difficulty>\n\n";
-        std::cout << "Difficulty can be either 'easy', 'medium', 'hard', or 'expert'\n";
-        return 0;
+void printUsage() {
+    std::cout << "usage: hangman <difficulty>\n\n";
+    std::cout << "Difficulty can be either 'easy', 'medium', 'hard', or 'expert'\n";
+}
+
+std::string getPhraseGivenDifficulty(const std::string& difficultyString) {
+    std::string difficultyLowercase = difficultyString;
+    std::transform(difficultyLowercase.begin(), difficultyLowercase.end(), difficultyLowercase.begin(), ::tolower);
+    if (difficultyLowercase == "medium") {
+        return Phrases::getPhrase(Phrases::Difficulty::MEDIUM);
     }
-    int difficulty = 1;
-    if (strcmp(argv[1], "easy") == 0) {
-        difficulty = 1;
+    else if (difficultyLowercase == "hard") {
+        return Phrases::getPhrase(Phrases::Difficulty::HARD);
     }
-    else if (strcmp(argv[1], "medium") == 0) {
-        difficulty = 2;
+    else if (difficultyLowercase == "expert") {
+        return Phrases::getPhrase(Phrases::Difficulty::EXPERT);
+    } else {
+        // default to easy if difficulty isn't recognized
+        return Phrases::getPhrase(Phrases::Difficulty::EASY);
     }
-    else if (strcmp(argv[1], "hard") == 0) {
-        difficulty = 3;
-    }
-    else if (strcmp(argv[1], "expert") == 0) {
-        difficulty = 4;
-    }
-    std::string phrase = Phrases::getPhrase(difficulty);
-    std::string guesses;
-    int mistakes = 0;
-    while (mistakes < 5 && !Phrases::isWon(phrase, guesses)) {
-        Phrases::printPhrase(phrase, guesses);
-        char guess = getGuess();
-        guesses.push_back(guess);
-        if (!Phrases::isCorrectGuess(phrase, guess)) {
-            mistakes++;
-        }
-        Mistakes::printMistakes(mistakes);
-        std::cout << "Guesses: " << guesses << "\n";
-        std::cout << "\n";
-    }
-    if (mistakes == 5) {
+}
+
+void printGameOverMessage(int wrongGuessCount, const std::string& phrase) {
+    if (wrongGuessCount == Mistakes::mistakes.size()) {
         std::cout << "You lost!\n";
-        std::cout << "The answer was " << phrase << "\n";
     } else {
         std::cout << "You won!\n";
-        std::cout << "The answer was " << phrase << "\n";
     }
+    std::cout << "The answer was " << phrase << "\n";
+}
+
+void printGuesses(const std::set<char>& guesses) {
+    std::cout << "Guesses: ";
+    for (char guess : guesses) {
+        std::cout << guess << " ";
+    }
+    std::cout << "\n";
+}
+
+int main(int argc, char* argv[]) {
+    // arguments: 1. program name 2. difficulty (easy, medium, hard, or expert)
+    if (argc != 2) {
+        printUsage();
+        return 1;
+    }
+    std::string phrase = getPhraseGivenDifficulty(argv[1]);
+    std::set<char> guesses;
+    int wrongGuessCount { 0 };
+    while (wrongGuessCount < Mistakes::mistakes.size() && !Phrases::isWon(phrase, guesses)) {
+        Phrases::printPhrase(phrase, guesses);
+        char guess = getGuess();
+        guesses.insert(guess);
+        if (!Phrases::isCorrectGuess(phrase, guess)) {
+            wrongGuessCount++;
+        }
+        Mistakes::printMistakes(wrongGuessCount);
+        printGuesses(guesses);
+        // add some spacing to help differentiate between turns
+        std::cout << "\n\n";
+    }
+    printGameOverMessage(wrongGuessCount, phrase);
     return 0;
 }

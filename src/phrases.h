@@ -1,10 +1,18 @@
 #ifndef PHRASES_H
 #define PHRASES_H
 
+#include <set>
 #include <string>
 #include <vector>
 
 namespace Phrases {
+
+    enum class Difficulty {
+        EASY,
+        MEDIUM,
+        HARD,
+        EXPERT
+    };
 
     const std::vector<std::string> easy {
         "APPLE",
@@ -55,10 +63,10 @@ namespace Phrases {
         "READ BETWEEN THE LINES"
     };
 
-    std::string getPhrase(int difficulty);
-    void printPhrase(const std::string& phrase, const std::string& guesses);
+    std::string getPhrase(Difficulty difficulty);
+    void printPhrase(const std::string& phrase, std::set<char> guesses);
     bool isCorrectGuess(const std::string& phrase, const char guess);
-    bool isWon(const std::string& phrase, const std::string& guesses);
+    bool isWon(const std::string& phrase, const std::set<char> guesses);
 
 }
 

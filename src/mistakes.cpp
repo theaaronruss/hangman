@@ -1,4 +1,4 @@
-#include "../include/mistakes.h"
+#include "mistakes.h"
 #include <iostream>
 
 void Mistakes::printMistakes(int amount) {
