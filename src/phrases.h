@@ -14,7 +14,7 @@ namespace Phrases {
         EXPERT
     };
 
-    const std::vector<std::string> easy {
+    const std::vector<std::string> easyPhrases {
         "APPLE",
         "TIGER",
         "HAPPY",
@@ -26,7 +26,7 @@ namespace Phrases {
         "GHOST",
         "MAGIC"
     };
-    const std::vector<std::string> medium {
+    const std::vector<std::string> mediumPhrases {
         "SUNSHINE",
         "THUNDER",
         "CHAMPION",
@@ -38,7 +38,7 @@ namespace Phrases {
         "STARLIGHT",
         "SUPERHERO"
     };
-    const std::vector<std::string> hard {
+    const std::vector<std::string> hardPhrases {
         "MISCHIEVOUS",
         "KALEIDOSCOPE",
         "UNBELIEVABLE",
@@ -50,7 +50,7 @@ namespace Phrases {
         "PARADOX",
         "GARGOYLE"
     };
-    const std::vector<std::string> expert {
+    const std::vector<std::string> expertPhrases {
         "PIECE OF CAKE",
         "ONCE IN A BLUE MOON",
         "BREAK THE ICE",
