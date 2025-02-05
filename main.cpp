@@ -1,8 +1,8 @@
 #include <array>
 #include <string>
 
-std::array<std::string, 5> hangman = {
-    // 1 mistake
+std::array<std::string, 5> mistakes = {
+    // Mistake 1
     " *--*\n"
     " |  |\n"
     "    |\n"
@@ -11,25 +11,25 @@ std::array<std::string, 5> hangman = {
     "    |\n"
     "    |\n"
     "-----\n",
-    // 2 mistake
-    " *--*\n"
-    " |  |\n"
-    " 0  |\n"
-    "    |\n"
-    "    |\n"
-    "    |\n"
-    "    |\n"
-    "-----\n",
-    // 3 mistake
+    // Mistake 2
     " *--*\n"
     " |  |\n"
     " 0  |\n"
+    "    |\n"
+    "    |\n"
+    "    |\n"
+    "    |\n"
+    "-----\n",
+    // Mistake 3
+    " *--*\n"
+    " |  |\n"
+    " 0  |\n"
     " |  |\n"
     " |  |\n"
     "    |\n"
     "    |\n"
     "-----\n",
-    // 4 mistake
+    // Mistake 4
     " *--*\n"
     " |  |\n"
     " 0  |\n"
@@ -38,7 +38,7 @@ std::array<std::string, 5> hangman = {
     "    |\n"
     "    |\n"
     "-----\n",
-    // 5 mistake
+    // Mistake 5
     " *--*\n"
     " |  |\n"
     " 0  |\n"
