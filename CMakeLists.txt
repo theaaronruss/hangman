@@ -3,6 +3,6 @@ set(CMAKE_CXX_STANDARD 11)
 project(hangman LANGUAGES CXX)
 add_executable(hangman
     src/main.cpp
-    src/mistakes.cpp
+    src/wrong_guesses.cpp
     src/phrases.cpp
 )

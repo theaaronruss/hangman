@@ -1,4 +1,4 @@
-#include "mistakes.h"
+#include "wrong_guesses.h"
 #include "phrases.h"
 #include <algorithm>
 #include <cstdio>
@@ -52,7 +52,7 @@ std::string getPhraseGivenDifficulty(const std::string& difficultyString) {
 }
 
 void printGameOverMessage(int wrongGuessCount, const std::string& phrase) {
-    if (wrongGuessCount == Mistakes::mistakes.size()) {
+    if (wrongGuessCount == WrongGuesses::wrongGuesses.size()) {
         std::cout << "You lost!\n";
     } else {
         std::cout << "You won!\n";
@@ -77,14 +77,14 @@ int main(int argc, char* argv[]) {
     std::string phrase = getPhraseGivenDifficulty(argv[1]);
     std::set<char> guesses;
     int wrongGuessCount { 0 };
-    while (wrongGuessCount < Mistakes::mistakes.size() && !Phrases::isWon(phrase, guesses)) {
+    while (wrongGuessCount < WrongGuesses::wrongGuesses.size() && !Phrases::isWon(phrase, guesses)) {
         Phrases::printPhrase(phrase, guesses);
         char guess = getGuess();
         guesses.insert(guess);
         if (!Phrases::isCorrectGuess(phrase, guess)) {
             wrongGuessCount++;
         }
-        Mistakes::printMistakes(wrongGuessCount);
+        WrongGuesses::printWrongGuesses(wrongGuessCount);
         printGuesses(guesses);
         // add some spacing to help differentiate between turns
         std::cout << "\n\n";

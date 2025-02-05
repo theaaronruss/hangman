@@ -1,13 +1,13 @@
-#ifndef MISTAKES_H
-#define MISTAKES_H
+#ifndef WRONG_GUESSES_H
+#define WRONG_GUESSES_H
 
 #include <array>
 #include <string>
 
-namespace Mistakes {
+namespace WrongGuesses {
 
-    const std::array<std::string, 5> mistakes {
-        // Mistake 1
+    const std::array<std::string, 5> wrongGuesses {
+        // wrong guess 1
         " *--*\n"
         " |  |\n"
         "    |\n"
@@ -17,27 +17,27 @@ namespace Mistakes {
         "    |\n"
         "-----\n",
 
-        // Mistake 2
-        " *--*\n"
-        " |  |\n"
-        " 0  |\n"
-        "    |\n"
-        "    |\n"
-        "    |\n"
-        "    |\n"
-        "-----\n",
-
-        // Mistake 3
+        // wrong guess 2
         " *--*\n"
         " |  |\n"
         " 0  |\n"
+        "    |\n"
+        "    |\n"
+        "    |\n"
+        "    |\n"
+        "-----\n",
+
+        // wrong guess 3
+        " *--*\n"
+        " |  |\n"
+        " 0  |\n"
         " |  |\n"
         " |  |\n"
         "    |\n"
         "    |\n"
         "-----\n",
 
-        // Mistake 4
+        // wrong guess 4
         " *--*\n"
         " |  |\n"
         " 0  |\n"
@@ -47,7 +47,7 @@ namespace Mistakes {
         "    |\n"
         "-----\n",
 
-        // Mistake 5
+        // wrong guess 5
         " *--*\n"
         " |  |\n"
         " 0  |\n"
@@ -58,7 +58,7 @@ namespace Mistakes {
         "-----\n"
     };
 
-    void printMistakes(int amount);
+    void printWrongGuesses(int amount);
 
 }
 
