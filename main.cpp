@@ -1,8 +1,9 @@
 #include <array>
+#include <iostream>
 #include <string>
 #include <vector>
 
-std::array<std::string, 5> mistakes = {
+std::array<std::string, 5> mistakes {
     // Mistake 1
     " *--*\n"
     " |  |\n"
@@ -49,7 +50,7 @@ std::array<std::string, 5> mistakes = {
     "    |\n"
     "-----\n"
 };
-std::vector<std::string> easy = {
+std::vector<std::string> easy {
     "APPLE",
     "TIGER",
     "HAPPY",
@@ -61,7 +62,7 @@ std::vector<std::string> easy = {
     "GHOST",
     "MAGIC"
 };
-std::vector<std::string> medium = {
+std::vector<std::string> medium {
     "SUNSHINE",
     "THUNDER",
     "CHAMPION",
@@ -73,7 +74,7 @@ std::vector<std::string> medium = {
     "STARLIGHT",
     "SUPERHERO"
 };
-std::vector<std::string> hard = {
+std::vector<std::string> hard {
     "MISCHIEVOUS",
     "KALEIDOSCOPE",
     "UNBELIEVABLE",
@@ -85,7 +86,7 @@ std::vector<std::string> hard = {
     "PARADOX",
     "GARGOYLE"
 };
-std::vector<std::string> expert = {
+std::vector<std::string> expert {
     "PIECE OF CAKE",
     "ONCE IN A BLUE MOON",
     "BREAK THE ICE",
@@ -97,6 +98,26 @@ std::vector<std::string> expert = {
     "UNDER THE WEATHER",
     "READ BETWEEN THE LINES"
 };
+
+void printPhrase(std::string& phrase, std::string& guesses)
+{
+    for (int i = 0; i < phrase.length(); i++)
+    {
+        if (guesses.find(phrase.at(i)) != std::string::npos)
+        {
+            std::cout << phrase.at(i) << " ";
+        }
+        else if (phrase.at(i) != ' ')
+        {
+            std::cout << "_ ";
+        }
+        else
+        {
+            std::cout << "  ";
+        }
+    }
+    std::cout << "\n";
+}
 
 int main()
 {
