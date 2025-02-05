@@ -58,6 +58,8 @@ namespace Phrases
 
     std::string getPhrase(int difficulty);
     void printPhrase(const std::string& phrase, const std::string& guesses);
+    bool isCorrectGuess(const std::string& phrase, const char guess);
+    bool isWon(const std::string& phrase, const std::string& guesses);
 
 }
 

@@ -48,3 +48,20 @@ void Phrases::printPhrase(const std::string& phrase, const std::string& guesses)
     }
     std::cout << "\n";
 }
+
+bool Phrases::isCorrectGuess(const std::string& phrase, const char guess)
+{
+    return phrase.find(guess) != std::string::npos;
+}
+
+bool Phrases::isWon(const std::string& phrase, const std::string& guesses)
+{
+    for (char c : phrase)
+    {
+        if (c != ' ' && guesses.find(c) == std::string::npos)
+        {
+            return false;
+        }
+    }
+    return true;
+}
