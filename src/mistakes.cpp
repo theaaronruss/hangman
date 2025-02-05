@@ -1,7 +1,7 @@
 #include "../include/mistakes.h"
 #include <iostream>
 
-void printMistakes(int amount)
+void Mistakes::printMistakes(int amount)
 {
     if (amount < 1 || amount > mistakes.size() + 1)
     {

@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-void printPhrase(const std::string& phrase, const std::string& guesses)
+void Phrases::printPhrase(const std::string& phrase, const std::string& guesses)
 {
     for (int i = 0; i < phrase.length(); i++)
     {
