@@ -56,6 +56,7 @@ namespace Phrases
         "READ BETWEEN THE LINES"
     };
 
+    std::string getPhrase(int difficulty);
     void printPhrase(const std::string& phrase, const std::string& guesses);
 
 }
